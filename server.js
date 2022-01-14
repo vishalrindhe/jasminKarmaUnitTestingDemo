@@ -1,7 +1,13 @@
 //Install express server
 const express = require('express');
 const path = require('path');
-
+const csp = require('express-csp-header');
+app.use(csp({
+    policies: {
+        'default-src': [csp.NONE],
+        'img-src': [csp.SELF],
+    }
+}));
 const app = express();
 
 // Serve only the static files form the dist directory
