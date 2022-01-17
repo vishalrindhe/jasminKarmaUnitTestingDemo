@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const app = express();
-app.use(express.static(__dirname + '/dist/demo-jasmin'));
+app.use(express.static(__dirname + '/dist/demojasmin'));
 // app.get('/*', function(req,res) {
 //     res.sendFile(path.join(__dirname+'/dist/abcddemo/index.html'));
 // });
@@ -10,6 +10,6 @@ app.use(express.static(__dirname + '/dist/demo-jasmin'));
 // });
 
 app.get('/*',(req, res)=> {
-    res.sendFile('index.html', {root: 'dist/<name-on-package.json>/'})
+    res.sendFile('index.html', {root: 'dist/demojasmin/'})
   });
 app.listen(process.env.PORT || 8080);
