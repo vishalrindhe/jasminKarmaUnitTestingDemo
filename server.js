@@ -10,6 +10,6 @@ app.use(express.static(__dirname + '/dist/demojasmin'));
 // });
 
 app.get('/*',(req, res)=> {
-    res.sendFile('index.html', {root: 'dist/demojasmin/'})
+    res.sendFile('index.html', {root: 'dist/<name-on-package.json>/'})
   });
 app.listen(process.env.PORT || 8080);
