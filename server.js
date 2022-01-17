@@ -1,21 +1,15 @@
-//Install express server
 const express = require('express');
 const path = require('path');
-const csp = require('express-csp-header');
-app.use(csp({
-    policies: {
-        'default-src': [csp.NONE],
-        'img-src': [csp.SELF],
-    }
-}));
 const app = express();
+app.use(express.static(__dirname + '/dist/demo-jasmin'));
+// app.get('/*', function(req,res) {
+//     res.sendFile(path.join(__dirname+'/dist/abcddemo/index.html'));
+// });
+// app.get('*', (req, res) => {
+//     res.sendFile(`./abcd/dist/index.html`); // load the single view file (angular will handle the page changes on the front-end)
+// });
 
-// Serve only the static files form the dist directory
-app.use(express.static('./demoJasmin'));
-
-app.get('/*', (req, res) =>
-    res.sendFile('index.html', {root: 'demoJasmin'}),
-);
-
-// Start the app by listening on the default Heroku port
-app.listen(process.env.PORT || 8080);   
+app.get('/*',(req, res)=> {
+    res.sendFile('index.html', {root: 'dist/<name-on-package.json>/'})
+  });
+app.listen(process.env.PORT || 8080);
